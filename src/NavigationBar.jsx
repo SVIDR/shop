@@ -2,12 +2,14 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Badge from 'react-bootstrap/Badge';
 
-function NavigationBar () {
+
+function NavigationBar({ handleShowCart, cartItems, handleShowModal }) {
   return (
     <Navbar expand="lg" className="bg-body-tertiary mb-4">
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="#home">Shop</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -24,6 +26,18 @@ function NavigationBar () {
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
+          </Nav>
+          <Nav>
+            <Nav.Link href="#cart" onClick={handleShowCart}>
+              Cart
+              <Badge bg="success" className='ms-2'>{cartItems.length}</Badge>
+
+            </Nav.Link>
+          </Nav>
+          <Nav>
+            <Nav.Link href='#modal'>
+              login
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
